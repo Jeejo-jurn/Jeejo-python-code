@@ -1,6 +1,6 @@
 """
 Personal Finance Calculator
-Student: ChatGPT
+Student: Jeejo Jurn
 Date: 26 July 2025
 Purpose: Calculate monthly budget and savings
 """
