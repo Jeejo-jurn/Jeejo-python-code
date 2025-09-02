@@ -96,11 +96,11 @@ def count_vowels_consonants(text):
     text.replace("9", "")
  
     vowels = text.count('a') + text.count('e') + text.count('i') + text.count('o') + text.count('u')
-    conconants = len(text) - vowels
+    consonants = len(text) - vowels
  
     return{
         "vowels": vowels,
-        "conconants": conconants
+        "consonants": consonants
     }
  
 # =============================================================================
