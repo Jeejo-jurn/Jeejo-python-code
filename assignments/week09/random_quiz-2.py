@@ -44,7 +44,7 @@ import random
 
 def get_parity_hint(number):
     if number % 2 == 0:
-        return "HINT: The number is even" 
+        return "HINT: The number is even"
     else:
         return "HINT: The number is odd"
 
@@ -57,9 +57,53 @@ def get_divisibility_hint(number):
         return "HINT: The number is NOT divisible by 3 or 5"
 
 def get_range_hint(number, current_min=1, current_max=100):
-    # Return narrowed range around the number
-    pass
+    lower_bound = max(current_min, number - 12)
+    upper_bound = min(current_max, number + 12)
+    return f"HINT: The number is between {lower_bound} and {upper_bound}"
 
 def get_thefirst_digit_hint(number):
-    # Retun the first digit of the number
-    pass
+    return f"HINT: The first digit of the number is {str(number)[0]}"
+
+def enhanced_guessing_game():
+    print("=== Enhanced GUESSING GAME ===")
+    print("Guess my number between 1 and 100!")
+    print("You have unlimited attempts.\n")
+
+    target = random.randint(1, 100)
+    attempt = 0
+
+    while True:
+        attempt += 1
+        try:
+            guess = int(input(f"Attempt {attempt} - Enter your guess: "))
+
+            if guess < 1 or guess > 100:
+                print("Please enter a number between 1 and 100.\n")
+                continue
+
+            if guess < target:
+                print("Too low! Try again.")
+            elif guess > target:
+                print("Too high! Try again.")
+            else:
+                print(f"Congratulations! You won in {attempt} attempts!")
+                break
+
+            # Show hints based on number of wrong attempts
+            if attempt == 3:
+                print(get_parity_hint(target))
+            elif attempt == 5:
+                print(get_divisibility_hint(target))
+            elif attempt == 7:
+                print(get_range_hint(target))
+            elif attempt == 10:
+                print(get_thefirst_digit_hint(target))
+
+            print()
+
+        except ValueError:
+            print("Invalid input. Please enter a valid number.\n")
+
+# Run the game
+enhanced_guessing_game()
+
